@@ -1,8 +1,8 @@
-/* Fill these in — they are the three links on the card. */
+/* The three links on the card. */
 const CONFIG = {
   linkedin: 'https://www.linkedin.com/in/tarlithagracia/',
   resume: 'https://drive.google.com/file/d/1SdrXPnBqe29Xaq2BNfkzhFGHwz6gGojj/view?usp=sharing',
-  portfolio: '',
+  portfolio: 'https://designbygracia.com',
   seconds: 10,
 };
 
