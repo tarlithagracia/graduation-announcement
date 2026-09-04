@@ -1,11 +1,10 @@
-/* GRACIA graduated! — Class of 2026
-   Built from Figma "Frame 6" (404 × 3614). The design grid is 404px wide and
+/* GRACIA graduated!
+   Built from Figma "Frame 6" (404 x 3614). The design grid is 404px wide and
    every size below is expressed in rem, where 1rem = 10 design px, so the
-   whole layout scales down proportionally on narrower phones.          */
+   layout scales proportionally on narrower phones.                       */
 
-/* Self-hosted so the page needs no third-party request and works offline.
-   Gotu and Passions Conflict are Google Fonts, SIL Open Font License 1.1.  */
-
+/* Gotu and Passions Conflict, the design's two typefaces (Google Fonts,
+   SIL Open Font License 1.1), self-hosted as woff2.                      */
 @font-face{
   font-family: 'Gotu'; font-style: normal; font-weight: 400; font-display: swap;
   src: url('assets/fonts/gotu-latin.woff2') format('woff2');
@@ -34,100 +33,45 @@
   --glass: rgba(255, 255, 255, .1);
   --pill-bg: rgba(255, 255, 255, .2);
   --hairline: rgba(255, 255, 255, .22);
-  --hero-tint: rgba(251, 47, 159, .04);
-  --night-tint: rgba(175, 59, 162, .14);
-  --brand: linear-gradient(90deg, #FFD1A8 0%, #FF406C 52.88%, #D1FF00 100%);
-
-  --font-sans: 'Gotu', 'Trebuchet MS', 'Segoe UI', sans-serif;
-  --font-script: 'Passions Conflict', 'Snell Roundhand', 'Brush Script MT', cursive;
-
-  --ease: cubic-bezier(.22, .61, .36, 1);
+  --font-sans: 'Gotu', sans-serif;
+  --font-script: 'Passions Conflict', cursive;
 }
 
 *, *::before, *::after{ box-sizing: border-box; }
 
-html{
-  scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
-}
+html{ scroll-behavior: smooth; }
 
 body{
   margin: 0;
-  background: #050208;
+  background: #000;
   color: var(--white);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-.visually-hidden{
-  position: absolute; width: 1px; height: 1px;
-  margin: -1px; padding: 0; border: 0;
-  clip: rect(0 0 0 0); clip-path: inset(50%); overflow: hidden; white-space: nowrap;
-}
-
-/* ---------------------------------------------------------------- deck --- */
-
-.deck{
-  width: 40.4rem;               /* 404px design column */
-  margin-inline: auto;
-  position: relative;
-}
+.deck{ width: 40.4rem; margin-inline: auto; position: relative; }
 
 .panel{
   position: relative;
   width: 100%;
-  min-height: 100svh;           /* one screen per panel (872px in the design) */
+  min-height: 100svh;            /* one screen per panel (872px in the design) */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  scroll-snap-align: start;
 }
 
-/* --------------------------------------------------------------- photos --- */
-/* Every photo is a real file in /assets. If a file is missing the block falls
-   back to a tinted gradient labelled with the filename it expects.       */
-
-.photo{ position: absolute; inset: 0; overflow: hidden; }
-.photo img{ position: absolute; display: block; max-width: none; }
-.photo__fallback{
-  position: absolute; inset: 0;
-  display: none; align-items: center; justify-content: center;
-  background:
-    radial-gradient(120% 80% at 30% 20%, rgba(255, 209, 168, .55), transparent 60%),
-    radial-gradient(120% 90% at 80% 70%, rgba(255, 64, 108, .45), transparent 62%),
-    linear-gradient(160deg, #3a2140, #150a1c 70%);
-}
-.photo__fallback span{
-  font-size: 1.1rem; letter-spacing: .08em; text-transform: uppercase;
-  color: rgba(255, 255, 255, .5);
-}
-.photo.is-missing img{ display: none; }
-.photo.is-missing .photo__fallback{ display: flex; }
-
-.asset{ position: absolute; display: block; }
-.asset img, .asset__fallback{ width: 100%; height: 100%; display: block; }
-.asset__fallback{ display: none; }
-.asset.is-missing img{ display: none; }
-.asset.is-missing .asset__fallback{ display: block; }
-
-/* ----------------------------------------------------------------- hero --- */
-/* Crop values carried over from Figma's fill transform on ASH_5643.        */
+/* ----------------------------------------------------- Frame 11 (hero) --- */
 
 .panel--hero{ background: #1c1016; justify-content: flex-end; }
-.photo--hero img{ width: 165.35%; height: 114.89%; left: -21.95%; top: -2.48%; }
-.hero__tint{ position: absolute; inset: 0; background: var(--hero-tint); }
+.hero__photo{ position: absolute; inset: 0; overflow: hidden; }
+.hero__photo img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero__tint{ position: absolute; inset: 0; background: rgba(251, 47, 159, .04); }
 .hero__scrim{
   position: absolute; left: 0; right: 0; bottom: 0; height: 56.5rem;
   background: linear-gradient(180deg, rgba(217, 217, 217, 0) 57.49%, rgba(54, 67, 19, .2) 105.15%);
-}
-/* a touch more floor than Figma's rectangle, so the type holds on tall screens */
-.panel--hero::after{
-  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 40%;
-  background: linear-gradient(180deg, transparent, rgba(20, 8, 16, .45));
-  pointer-events: none;
 }
 
 .hero__copy{
@@ -160,18 +104,16 @@ body{
   font-size: 1.14618rem;
   line-height: 1.9rem;
 }
-
-.hero__hint{
+.pill.hero__hint{
   position: relative;
   margin-bottom: 1.8rem;
-  animation: nudge 2.4s var(--ease) infinite;
-}
-@keyframes nudge{
-  0%, 100%{ transform: translateY(0); }
-  50%     { transform: translateY(.5rem); }
+  padding: .238095rem .833333rem;
+  border-radius: 1.19048rem;
+  font-size: 1.19048rem;
+  line-height: 2rem;
 }
 
-/* ---------------------------------------------------------------- pills --- */
+/* -------------------------------------------------------------- pills --- */
 
 .pill{
   display: inline-flex; align-items: center; justify-content: center; gap: .414rem;
@@ -186,12 +128,7 @@ body{
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  transition: background .2s var(--ease), transform .2s var(--ease);
 }
-.pill:hover{ background: rgba(255, 255, 255, .32); }
-.pill:active{ transform: scale(.96); }
 .pill--share{
   padding: .313rem 1.095rem;
   font-size: 1.56483rem;
@@ -200,107 +137,32 @@ body{
 }
 .pill__icon{ width: 2.15858rem; height: 2.15858rem; }
 
-:where(a, button):focus-visible{
-  outline: 2px solid #D1FF00;
-  outline-offset: 3px;
-}
-
-/* ---------------------------------------------------------------- night --- */
+/* ------------------------------------- iPhone 16 & 17 Pro - 4 (backdrop) --- */
 
 .night{ position: relative; background: #000; }
 .night__bg{ position: absolute; inset: 0; overflow: hidden; }
-.night__bg .photo{ position: absolute; inset: 0; }
 .night__bg img{
-  width: 100%; height: 100%; left: 0; top: 0;
-  object-fit: cover; object-position: bottom;
-  transform: scaleY(-1);                 /* Figma flips this fill vertically */
+  width: 100%; height: 100%; display: block;
+  object-fit: cover; object-position: top;
 }
-.night__bg .photo__fallback{
-  background: linear-gradient(180deg, #1a0f21 0%, #2a1430 45%, #12070f 100%);
-}
-.night__tint{ position: absolute; inset: 0; background: var(--night-tint); }
-.night .panel{ background: transparent; }
+.night__tint{ position: absolute; inset: 0; background: rgba(175, 59, 162, .14); }
 
-/* ----------------------------------------------------------- then / now --- */
+/* ----------------------------------------------------- Card (13:174) --- */
 
 .story{
   position: relative;
   display: flex; flex-direction: column; gap: 5rem;
   width: 36.203rem;
-  padding: 8rem 0;
+  padding: 5rem 0;
 }
 .story__item{ margin: 0; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-.story__caption{
-  width: 33.4rem;
-  font-size: 1.2rem; line-height: 2rem; text-align: center;
-}
+.story__photo{ width: 100%; aspect-ratio: 344 / 229; overflow: hidden; }
+.story__photo img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.story__photo--collage{ width: 36.25rem; aspect-ratio: 362.5 / 241.5; border-radius: 1.4rem; }
+.story__caption{ width: 33.4rem; font-size: 1.2rem; line-height: 2rem; text-align: center; }
+.story__item:last-child .story__caption{ width: 31.4rem; }
 
-.photo--card{
-  position: relative; inset: auto;
-  width: 100%; aspect-ratio: 344 / 229;
-  border-radius: 1.2rem;
-}
-.photo--card img{ width: 105.15%; height: 105.36%; left: -5.23%; top: -.24%; }
-
-/* the "today" collage: same photo, dimmed and blurred, with the job hunt on top */
-.collage{
-  position: relative;
-  width: 36.25rem; aspect-ratio: 362.5 / 241.5;
-  padding: 0; border: 0; border-radius: 1.4rem;
-  background: transparent; overflow: hidden; cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-.collage__veil{
-  position: absolute; inset: -.1rem;
-  background: rgba(0, 0, 0, .68);
-  -webkit-backdrop-filter: blur(7.5px);
-  backdrop-filter: blur(7.5px);
-  /* Figma masks the veil around Gracia so she stays sharp — approximated here */
-  -webkit-mask-image: radial-gradient(46% 68% at 31% 56%, transparent 38%, #000 78%);
-  mask-image: radial-gradient(46% 68% at 31% 56%, transparent 38%, #000 78%);
-  transition: opacity .45s var(--ease);
-}
-.collage__stickers{ position: absolute; inset: 0; transition: opacity .45s var(--ease); }
-.collage.is-peeking .collage__veil,
-.collage.is-peeking .collage__stickers{ opacity: 0; }
-
-.brand{ position: absolute; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 700; }
-.brand--linkedin{
-  left: 18.6rem; top: 5.7rem;
-  display: inline-flex; align-items: center; gap: .15rem;
-  font-size: 2rem; line-height: 2rem; letter-spacing: -.04em;
-  color: #0A66C2;
-}
-.brand--linkedin i{
-  font-style: normal;
-  background: #0A66C2; color: #fff;
-  border-radius: .4rem;
-  padding: 0 .3rem .15rem;
-  font-size: 1.7rem; line-height: 2rem;
-}
-.brand--indeed{
-  left: 22.8rem; top: 9.4rem;
-  font-size: 2.6rem; line-height: 4.2rem; letter-spacing: -.05em;
-  color: #2164F4;
-}
-.asset--coffee{
-  left: 16.1rem; top: 12.1rem;
-  width: 10.4rem; height: 7.8rem;
-  transform: rotate(15deg);
-}
-
-.collage__hint{
-  position: absolute; right: .8rem; bottom: .8rem;
-  padding: .2rem .7rem;
-  border-radius: 1rem;
-  background: rgba(0, 0, 0, .35);
-  color: rgba(255, 255, 255, .78);
-  font-family: var(--font-sans); font-size: 1rem; line-height: 1.7rem;
-  transition: opacity .3s var(--ease);
-}
-.collage.is-peeking .collage__hint{ opacity: 0; }
-
-/* ---------------------------------------------------------------- glass --- */
+/* ---------------------------------------------------------- glass panel --- */
 
 .glass{
   display: flex; flex-direction: column; align-items: center;
@@ -308,23 +170,28 @@ body{
   padding: 3rem 0;
   gap: 2rem;
   background: var(--glass);
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
 }
 
-/* ----------------------------------------------------------------- quiz --- */
+/* ------------------------------------------------------ Frame 24 (quiz) --- */
 
 .quiz{
   display: flex; flex-direction: column; align-items: center;
-  gap: 3rem; width: 36.2rem; padding: 6rem 0;
+  gap: 3rem; width: 36.2rem;
+  padding-top: 5.554rem;         /* Frame 20 sits at y=195.48, 139.94 below */
 }
 
+/* The ring is centred on the number without taking part in the layout, so
+   everything below it stays at its Figma coordinate.                     */
 .timer{
   position: relative;
-  width: 9.6rem; height: 9.6rem;
+  width: 4.8rem; height: 5.10379rem;   /* the "10" text box in the design */
   display: grid; place-items: center;
 }
-.timer__ring{ position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.timer__ring{
+  position: absolute; left: 50%; top: 50%;
+  width: 9.6rem; height: 9.6rem;
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
 .timer__track{ fill: none; stroke: rgba(255, 255, 255, .18); stroke-width: 4; }
 .timer__bar{
   fill: none; stroke: url(#ringGrad); stroke-width: 4; stroke-linecap: round;
@@ -335,9 +202,6 @@ body{
   font-size: 4.21845rem; line-height: 5.10379rem;
   font-variant-numeric: tabular-nums;
 }
-.timer.is-urgent .timer__num{ animation: pulse .9s var(--ease) infinite; }
-.timer.is-done{ opacity: .45; }
-@keyframes pulse{ 0%, 100%{ transform: scale(1); } 50%{ transform: scale(1.09); } }
 
 .quiz__body{ display: flex; flex-direction: column; align-items: center; gap: 3rem; width: 100%; }
 .quiz__head{ display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 31.9rem; }
@@ -352,57 +216,34 @@ body{
 }
 
 .quiz__options{
-  display: flex; flex-direction: column; align-items: center; gap: 1.2rem;
+  display: flex; flex-direction: column; align-items: center; gap: 2rem;
   width: 100%; padding-left: 2.4rem;
 }
 .option{
   display: flex; align-items: center; gap: .7rem;
-  width: 33.8rem; padding: .4rem .8rem;
-  background: transparent; border: 0; border-radius: 1rem;
+  width: 33.8rem; padding: 0;
+  background: transparent; border: 0;
   color: var(--white);
   font-family: var(--font-sans); font-size: 2rem; line-height: 3.3rem;
   text-align: left; cursor: pointer;
-  transition: background .18s var(--ease), opacity .3s var(--ease), transform .18s var(--ease);
 }
-.option:hover:not(:disabled){ background: rgba(255, 255, 255, .1); }
-.option:active:not(:disabled){ transform: scale(.99); }
 .option__key{ width: 1.8rem; flex: none; }
-.option:disabled{ cursor: default; }
-.quiz.is-answered .option:not(.is-correct):not(.is-chosen){ opacity: .45; }
-.option.is-correct{
-  background: rgba(209, 255, 0, .16);
-  box-shadow: inset 0 0 0 1px rgba(209, 255, 0, .5);
-}
-.option.is-chosen.is-wrong{
-  background: rgba(255, 64, 108, .14);
-  box-shadow: inset 0 0 0 1px rgba(255, 64, 108, .45);
-}
-.option.is-chosen.is-wrong .option__label{ text-decoration: line-through; text-decoration-thickness: 1px; }
 
-.quiz__verdict{
-  margin: 0; min-height: 3.4rem;
-  width: 31.9rem;
-  font-size: 1.3rem; line-height: 1.7rem; text-align: center;
-  color: rgba(255, 255, 255, .88);
-  opacity: 0; transform: translateY(.6rem);
-  transition: opacity .3s var(--ease), transform .3s var(--ease);
-}
-.quiz__verdict.is-shown{ opacity: 1; transform: none; }
+/* ------------------------------------------------------ Card (13:175) --- */
 
-/* ----------------------------------------------------------------- card --- */
-
-.panel--card{ justify-content: center; }
 .card{
   display: flex; flex-direction: column; align-items: center;
   width: 36.2rem;
-  padding-bottom: 14.6rem;      /* Figma sits this block above centre */
+  padding-bottom: 14.6rem;       /* Frame 22 sits at y=64, 210 below the sign */
   gap: 2rem;
 }
-.card__intro{ display: flex; flex-direction: column; align-items: center; text-align: center; }
+.card__intro{
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 36.2rem; text-align: center;
+}
 .card__intro-small{ margin: 0; width: 32.6rem; font-size: 1.8rem; line-height: 3rem; }
 .card__intro-big{ margin: 0; width: 28.4rem; font-size: 2.4rem; line-height: 4rem; }
 
-.card__glass{ gap: 2rem; }
 .card__id{ display: flex; flex-direction: column; align-items: center; gap: 1.4rem; width: 31.9rem; text-align: center; }
 .card__idtop{
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -412,13 +253,14 @@ body{
 .card__name{
   margin: 0; width: 100%;
   font-size: 6.33413rem; line-height: 7.9rem;
-  background: var(--brand);
+  background: linear-gradient(90deg, #FFD1A8 0%, #FF406C 52.88%, #D1FF00 100%);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
 }
 .card__role{ margin: 0; width: 100%; font-size: 2rem; line-height: 3.3rem; }
 .card__bio{ margin: 0; width: 33.8rem; font-size: 1.4rem; line-height: 2.3rem; }
 .card__links{ display: flex; justify-content: center; gap: 1rem; }
+.card__links [data-link="email"]{ width: 6.2rem; }
 
 .card__thanks{ display: flex; flex-direction: column; align-items: center; margin-top: 3.6rem; }
 .card__thankyou{
@@ -430,39 +272,6 @@ body{
   font-family: var(--font-script); font-size: 3.76186rem; line-height: 4.1rem; text-align: center;
 }
 
-.confetti{ position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-
-/* ---------------------------------------------------------------- toast --- */
-
-.toast{
-  position: fixed; left: 50%; bottom: 3rem; transform: translate(-50%, 1rem);
-  padding: .8rem 1.6rem;
-  border-radius: 2rem;
-  background: rgba(20, 8, 20, .82);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, .16);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  color: var(--white); font-size: 1.3rem; line-height: 2rem;
-  opacity: 0; pointer-events: none;
-  transition: opacity .25s var(--ease), transform .25s var(--ease);
-  z-index: 10;
-}
-.toast.is-shown{ opacity: 1; transform: translate(-50%, 0); }
-
-/* -------------------------------------------------------------- reveals --- */
-
-.reveal{ opacity: 0; transform: translateY(1.8rem); transition: opacity .7s var(--ease), transform .7s var(--ease); }
-.reveal.is-in{ opacity: 1; transform: none; }
-
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior: auto; }
-  .reveal{ opacity: 1; transform: none; transition: none; }
-  .hero__hint{ animation: none; }
-  .timer.is-urgent .timer__num{ animation: none; }
-  .timer__bar{ transition: none; }
-}
-
-/* Wider screens: keep the 404px phone column, give it an edge */
-@media (min-width: 620px){
-  .deck{ box-shadow: 0 0 0 1px rgba(255, 255, 255, .07), 0 3rem 8rem rgba(0, 0, 0, .6); }
-  body{ background: radial-gradient(120% 80% at 50% 0%, #2a1430, #050208 70%); }
 }
