@@ -65,9 +65,12 @@ paint();
 
 document.querySelectorAll('.option').forEach((option) => {
   option.addEventListener('click', () => {
+    if (finished) return;
     running = false;
     finished = true;
-    showCard();
+    option.classList.add('is-selected');
+    document.querySelector('.option[data-answer]').classList.add('is-answer');
+    setTimeout(showCard, 1400);   // long enough to read the revealed answer
   });
 });
 
