@@ -162,7 +162,7 @@ body{
   padding: 11.05rem 0 5rem;      /* centred + 30.25px, so the frame starts at y=110 */
 }
 .story__item{ margin: 0; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-.story__photo{ width: 100%; aspect-ratio: 344 / 229; overflow: hidden; border-radius: 1.2rem; }
+.story__photo{ width: 100%; aspect-ratio: 344 / 229; overflow: hidden; }
 .story__photo img{ width: 100%; height: 100%; object-fit: cover; display: block; }
 .story__photo--collage{ width: 36.25rem; aspect-ratio: 362.5 / 241.5; }
 .story__caption{ width: 33.4rem; font-size: 1.2rem; line-height: 2rem; text-align: center; }
@@ -176,6 +176,7 @@ body{
   padding: 3rem 0;
   gap: 2rem;
   background: var(--glass);
+  box-shadow: inset 0 0 0 1px var(--hairline);
 }
 
 /* ------------------------------------------------------ Frame 24 (quiz) --- */
@@ -190,7 +191,7 @@ body{
 .quiz{
   display: flex; flex-direction: column; align-items: center;
   gap: 3rem; width: 36.2rem;
-  padding-top: 16.571rem;        /* puts the Quiz Section's top at y=245 */
+  padding-bottom: 15.029rem;     /* puts the Quiz Section's top at y=87 */
 }
 
 /* The ring is centred on the number without taking part in the layout, so
