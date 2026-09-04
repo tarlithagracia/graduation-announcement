@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GRACIA graduated! — Class of 2026</title>
+<meta name="description" content="Gracia graduated. Class of 2026, Master of Human-Computer Interaction + Design, University of Washington. Take the quiz, then share her card.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="GRACIA graduated!">
+<meta property="og:description" content="Class of 2026 — Master of Human-Computer Interaction + Design, University of Washington.">
+<meta property="og:type" content="website">
+<link rel="preload" href="assets/fonts/gotu-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/passions-conflict-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<main class="deck">
+
+  <!-- 1 — Hero ------------------------------------------------------------ -->
+  <section class="panel panel--hero" id="hero" aria-label="Gracia graduated">
+    <div class="photo photo--hero" data-photo>
+      <img src="assets/hero-ash.jpg" alt="Gracia in cap and gown on graduation day" data-asset>
+      <div class="photo__fallback" aria-hidden="true"><span>ASH_5643.jpg</span></div>
+    </div>
+    <div class="hero__tint" aria-hidden="true"></div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+
+    <div class="hero__copy reveal">
+      <div class="hero__names">
+        <h1 class="hero__name">GRACIA</h1>
+        <p class="hero__script" aria-hidden="true">graduated!</p>
+      </div>
+      <p class="hero__meta">
+        Class of 2026<br>
+        Master of Human-Computer Interaction + Design<br>
+        University of Washington
+      </p>
+    </div>
+
+    <a class="pill hero__hint" href="#story" data-scroll>Keep scrolling</a>
+  </section>
+
+  <!-- The dark half: three panels over one flipped background --------------- -->
+  <div class="night">
+    <div class="night__bg" aria-hidden="true">
+      <div class="photo photo--night" data-photo>
+        <img src="assets/dark-bg.jpg" alt="" data-asset>
+        <div class="photo__fallback"></div>
+      </div>
+      <div class="night__tint"></div>
+    </div>
+
+    <!-- 2 — Then / Now --------------------------------------------------- -->
+    <section class="panel panel--story" id="story" aria-label="Then and now">
+      <div class="story">
+
+        <figure class="story__item reveal">
+          <div class="photo photo--card" data-photo>
+            <img src="assets/grad-photo.jpg" alt="Gracia on graduation day, freshly capped" data-asset>
+            <div class="photo__fallback" aria-hidden="true"><span>IMG_3862.jpg</span></div>
+          </div>
+          <figcaption class="story__caption">August 21, 2026 &mdash; Gracia is freshly capped, full of hope.</figcaption>
+        </figure>
+
+        <figure class="story__item reveal">
+          <button class="collage" type="button" data-peek aria-pressed="false"
+                  aria-label="Tap to see today's photo without the job-hunt clutter">
+            <div class="photo photo--card" data-photo>
+              <img src="assets/grad-photo.jpg" alt="The same graduation photo, today" data-asset>
+              <div class="photo__fallback" aria-hidden="true"><span>IMG_3862.jpg</span></div>
+            </div>
+            <div class="collage__veil" aria-hidden="true"></div>
+
+            <div class="collage__stickers" aria-hidden="true">
+              <span class="brand brand--linkedin">Linked<i>in</i></span>
+              <span class="brand brand--indeed">indeed</span>
+              <span class="asset asset--coffee" data-photo>
+                <img src="assets/job-badge.png" alt="" data-asset>
+                <svg class="asset__fallback" viewBox="0 0 104 78" aria-hidden="true">
+                  <path d="M14 26h66v18a26 26 0 0 1-26 26H40a26 26 0 0 1-26-26V26Z" fill="#f7f4ef"/>
+                  <ellipse cx="47" cy="26" rx="33" ry="11" fill="#42250f"/>
+                  <path d="M81 32h5a11 11 0 0 1 0 22h-5" fill="none" stroke="#f7f4ef" stroke-width="7"/>
+                </svg>
+              </span>
+            </div>
+            <span class="collage__hint">tap to peek</span>
+          </button>
+          <figcaption class="story__caption">Today &mdash; Gracia is still full of hope, mostly running on coffee and LinkedIn notifications.</figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- 3 — Quiz --------------------------------------------------------- -->
+    <section class="panel panel--quiz" id="quiz" aria-label="Quick quiz">
+      <div class="quiz reveal">
+        <div class="glass quiz__glass">
+
+          <div class="timer" data-timer>
+            <svg class="timer__ring" viewBox="0 0 100 100" aria-hidden="true">
+              <defs>
+                <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#FFD1A8"/>
+                  <stop offset="53%" stop-color="#FF406C"/>
+                  <stop offset="100%" stop-color="#D1FF00"/>
+                </linearGradient>
+              </defs>
+              <circle class="timer__track" cx="50" cy="50" r="44"/>
+              <circle class="timer__bar" cx="50" cy="50" r="44"/>
+            </svg>
+            <span class="timer__num" data-timer-num>10</span>
+            <span class="visually-hidden" role="timer" aria-live="off" data-timer-sr>10 seconds left</span>
+          </div>
+
+          <div class="quiz__body">
+            <div class="quiz__head">
+              <p class="quiz__title" aria-hidden="true">Quick Quiz!</p>
+              <h2 class="quiz__question" id="quiz-q">What Gracia is doing now?</h2>
+            </div>
+
+            <div class="quiz__options" role="group" aria-labelledby="quiz-q">
+              <button class="option" type="button" data-option="a"><span class="option__key">a.</span><span class="option__label">Saving the world</span></button>
+              <button class="option" type="button" data-option="b"><span class="option__key">b.</span><span class="option__label">Traveling to Africa</span></button>
+              <button class="option" type="button" data-option="c" data-correct><span class="option__key">c.</span><span class="option__label">Getting a job</span></button>
+              <button class="option" type="button" data-option="d"><span class="option__key">d.</span><span class="option__label">Volunteering for seal sitter</span></button>
+            </div>
+
+            <p class="quiz__verdict" data-verdict aria-live="polite"></p>
+          </div>
+        </div>
+
+        <a class="pill quiz__skip" href="#card" data-scroll data-skip>Skip the quiz, show me the card!</a>
+      </div>
+    </section>
+
+    <!-- 4 — The card ----------------------------------------------------- -->
+    <section class="panel panel--card" id="card" aria-label="Gracia's card">
+      <canvas class="confetti" data-confetti aria-hidden="true"></canvas>
+
+      <div class="card reveal">
+        <div class="card__intro">
+          <p class="card__intro-small">Consider this permission to share</p>
+          <p class="card__intro-big">to literally anyone...</p>
+        </div>
+
+        <div class="glass card__glass">
+          <button class="pill pill--share" type="button" data-share>
+            <svg class="pill__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3v12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M8 7l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 11H5v9.5h14V11h-2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Share</span>
+          </button>
+
+          <div class="card__id">
+            <div class="card__idtop">
+              <p class="card__name">GRACIA</p>
+              <p class="card__role">Product Designer</p>
+            </div>
+            <p class="card__bio">5 years experiences with background in Human-Computer Interaction + Design and Law</p>
+          </div>
+
+          <div class="card__links">
+            <a class="pill" href="#" data-link="linkedin" target="_blank" rel="noopener">Linkedin</a>
+            <a class="pill" href="#" data-link="resume" target="_blank" rel="noopener">Resume</a>
+            <a class="pill" href="#" data-link="email">Email</a>
+          </div>
+        </div>
+
+        <div class="card__thanks">
+          <p class="card__thankyou" aria-hidden="true">Thank You</p>
+          <p class="card__sign" aria-hidden="true">-Gracia-</p>
+          <p class="visually-hidden">Thank you — Gracia</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
