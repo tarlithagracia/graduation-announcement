@@ -18,8 +18,9 @@ python3 -m http.server 8000   # then visit http://localhost:8000
   quiz panel comes into view and pauses when it leaves. Picking an answer, or
   the countdown reaching zero, moves on to the card.
 - **Share** opens the device's share sheet, falling back to copying the link.
-- **Linkedin / Resume / Email** are the three links on the card — set them in
-  `CONFIG` at the top of `script.js`.
+- **Linkedin / Resume / Portfolio** are the three links on the card. LinkedIn
+  and the resume are wired up in `CONFIG` at the top of `script.js`; add the
+  portfolio URL there and that pill starts working too.
 
 ## Fidelity
 

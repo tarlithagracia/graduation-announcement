@@ -1,8 +1,8 @@
 /* Fill these in — they are the three links on the card. */
 const CONFIG = {
-  linkedin: '',
-  resume: '',
-  email: '',
+  linkedin: 'https://www.linkedin.com/in/tarlithagracia/',
+  resume: 'https://drive.google.com/file/d/1SdrXPnBqe29Xaq2BNfkzhFGHwz6gGojj/view?usp=sharing',
+  portfolio: '',
   seconds: 10,
 };
 
@@ -73,14 +73,8 @@ document.querySelectorAll('.option').forEach((option) => {
 
 /* The card's three links. */
 
-const hrefs = {
-  linkedin: CONFIG.linkedin,
-  resume: CONFIG.resume,
-  email: CONFIG.email ? `mailto:${CONFIG.email}` : '',
-};
-
 document.querySelectorAll('[data-link]').forEach((link) => {
-  const href = hrefs[link.dataset.link];
+  const href = CONFIG[link.dataset.link];
   if (href) link.href = href;
   else link.addEventListener('click', (event) => event.preventDefault());
 });
