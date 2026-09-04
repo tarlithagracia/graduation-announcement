@@ -159,10 +159,10 @@ body{
   position: relative;
   display: flex; flex-direction: column; gap: 5rem;
   width: 36.203rem;
-  padding: 5rem 0;
+  padding: 11.05rem 0 5rem;      /* centred + 30.25px, so the frame starts at y=110 */
 }
 .story__item{ margin: 0; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-.story__photo{ width: 100%; aspect-ratio: 344 / 229; overflow: hidden; border-radius: 1.4rem; }
+.story__photo{ width: 100%; aspect-ratio: 344 / 229; overflow: hidden; border-radius: 1.2rem; }
 .story__photo img{ width: 100%; height: 100%; object-fit: cover; display: block; }
 .story__photo--collage{ width: 36.25rem; aspect-ratio: 362.5 / 241.5; }
 .story__caption{ width: 33.4rem; font-size: 1.2rem; line-height: 2rem; text-align: center; }
@@ -180,10 +180,17 @@ body{
 
 /* ------------------------------------------------------ Frame 24 (quiz) --- */
 
+.pill.quiz__skip{
+  padding: .333664rem 1.16782rem;
+  border-radius: 1.66832rem;
+  font-size: 1.66832rem;
+  line-height: 2.8rem;
+}
+
 .quiz{
   display: flex; flex-direction: column; align-items: center;
   gap: 3rem; width: 36.2rem;
-  padding-top: 7.954rem;         /* keeps Frame 20's top at y=195.48 */
+  padding-top: 16.571rem;        /* puts the Quiz Section's top at y=245 */
 }
 
 /* The ring is centred on the number without taking part in the layout, so
@@ -222,13 +229,13 @@ body{
 }
 
 .quiz__options{
-  display: flex; flex-direction: column; align-items: center; gap: 2.8rem;
-  width: 100%; padding-left: 2.4rem;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  gap: 2rem; width: 100%; padding-left: 2.4rem;
 }
 .option{
-  position: relative; isolation: isolate;
+  position: relative;
   display: flex; align-items: center; gap: .7rem;
-  width: 33.8rem; padding: 0;
+  padding: 0 .5rem;
   background: transparent; border: 0;
   color: var(--white);
   font-family: var(--font-sans); font-size: 2rem; line-height: 3.3rem;
@@ -236,24 +243,15 @@ body{
 }
 .option__key{ width: 1.8rem; flex: none; }
 
-/* the answer the reader picked */
-.option.is-selected::after{
+/* Frame 27 — the answer the reader picked, and the right one revealed */
+.option.is-selected::after,
+.option.is-answer::after{
   content: "";
   position: absolute;
-  inset: -1.1rem 2.4rem -1.1rem 0;
-  border: 1px solid rgba(255, 255, 255, .8);
-  border-radius: 1.2rem;
+  inset: -.35rem -.25rem;        /* 164 x 40 around the 159 x 33 row */
+  border: .05rem solid #FFFFFF;
+  border-radius: 5rem;
   pointer-events: none;
-}
-
-/* the right answer, revealed once an answer is picked */
-.option.is-answer::before{
-  content: "";
-  position: absolute;
-  inset: -1.1rem 2.4rem -1.1rem 0;
-  z-index: -1;
-  background: rgba(255, 255, 255, .2);
-  border-radius: 1.2rem;
 }
 
 /* ------------------------------------------------------ Card (13:175) --- */
