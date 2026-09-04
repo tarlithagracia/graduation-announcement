@@ -111,6 +111,12 @@ body{
   border-radius: 1.19048rem;
   font-size: 1.19048rem;
   line-height: 2rem;
+  animation: float 2.6s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%, 100%{ transform: translateY(0); }
+  50%     { transform: translateY(.7rem); }
 }
 
 /* -------------------------------------------------------------- pills --- */
@@ -273,4 +279,5 @@ body{
 
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior: auto; }
+  .pill.hero__hint{ animation: none; }
 }
