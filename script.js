@@ -68,9 +68,8 @@ document.querySelectorAll('.option').forEach((option) => {
     if (finished) return;
     running = false;
     finished = true;
-    option.classList.add('is-selected');
     document.querySelector('.option[data-answer]').classList.add('is-answer');
-    setTimeout(showCard, 1400);   // long enough to read the revealed answer
+    setTimeout(showCard, 1000);   // a beat to see the answer, then the card
   });
 });
 

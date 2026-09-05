@@ -244,8 +244,7 @@ body{
 }
 .option__key{ width: 1.8rem; flex: none; }
 
-/* Frame 27 — the answer the reader picked, and the right one revealed */
-.option.is-selected::after,
+/* Frame 27 — the right answer, revealed once any option is picked */
 .option.is-answer::after{
   content: "";
   position: absolute;
