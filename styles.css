@@ -278,9 +278,6 @@ body{
 .card__name{
   margin: 0; width: 100%;
   font-size: 6.33413rem; line-height: 7.9rem;
-  background: linear-gradient(90deg, #FFD1A8 0%, #FF406C 52.88%, #D1FF00 100%);
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent;
 }
 .card__role{ margin: 0; width: 100%; font-size: 2rem; line-height: 3.3rem; }
 .card__bio{ margin: 0; width: 33.8rem; font-size: 1.4rem; line-height: 2.3rem; }
@@ -290,10 +287,6 @@ body{
 .card__thankyou{
   margin: 0; width: 36.2rem;
   font-family: var(--font-script); font-size: 6.77064rem; line-height: 7.4rem; text-align: center;
-}
-.card__sign{
-  margin: 0; width: 20.113rem;
-  font-family: var(--font-script); font-size: 3.76186rem; line-height: 4.1rem; text-align: center;
 }
 
 @media (prefers-reduced-motion: reduce){
