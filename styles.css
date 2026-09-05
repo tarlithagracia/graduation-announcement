@@ -253,6 +253,51 @@ body{
   pointer-events: none;
 }
 
+/* Wrong pick: a quick shake and a rose tint on the option itself. */
+.option.is-wrong{
+  color: #FF9FB2;
+  animation: option-shake .4s ease;
+}
+
+/* Right pick: the reveal pill gets the gradient treatment and a little pop. */
+.option.is-answer.is-correct::after{
+  border: none;
+  padding: .05rem;
+  background: linear-gradient(90deg, #FFD1A8 0%, #FF406C 52.88%, #D1FF00 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.option.is-correct{ animation: option-pop .5s ease; }
+
+@keyframes option-shake{
+  10%, 90%{ transform: translateX(-.2rem); }
+  20%, 80%{ transform: translateX(.4rem); }
+  30%, 50%, 70%{ transform: translateX(-.6rem); }
+  40%, 60%{ transform: translateX(.6rem); }
+}
+@keyframes option-pop{
+  0%{ transform: scale(1); }
+  40%{ transform: scale(1.08); }
+  100%{ transform: scale(1); }
+}
+
+/* The quiz's win/lose feedback line, hidden until answered. */
+.quiz__feedback{
+  margin: 0; width: 100%;
+  font-size: 1.6rem; line-height: 2.6rem; text-align: center;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.quiz__feedback:empty{ display: none; }
+.quiz__feedback.is-visible{ opacity: 1; }
+.quiz__feedback.is-wrong{ color: #FF9FB2; }
+.quiz__feedback.is-correct{
+  background: linear-gradient(90deg, #FFD1A8 0%, #FF406C 52.88%, #D1FF00 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+
 /* ------------------------------------------------------ Card (13:175) --- */
 
 .card{
@@ -297,4 +342,5 @@ body{
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior: auto; }
   .pill.hero__hint{ animation: none; }
+  .option.is-wrong, .option.is-correct{ animation: none; }
 }

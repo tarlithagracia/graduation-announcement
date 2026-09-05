@@ -61,15 +61,40 @@ new IntersectionObserver((entries) => {
 
 paint();
 
-/* Answering the quiz goes to the card. */
+/* Answering the quiz goes to the card, with feedback on the way. */
+
+const correctOption = document.querySelector('.option[data-answer]');
+const feedback = document.querySelector('[data-quiz-feedback]');
+
+const FEEDBACK = {
+  correct: "Yes! You really know her \u{1F389}",
+  wrong: "Nice try — she's actually getting a job.",
+};
+
+function say(kind) {
+  feedback.textContent = FEEDBACK[kind];
+  feedback.classList.remove('is-wrong', 'is-correct', 'is-visible');
+  requestAnimationFrame(() => {
+    feedback.classList.add(kind, 'is-visible');
+  });
+}
 
 document.querySelectorAll('.option').forEach((option) => {
   option.addEventListener('click', () => {
     if (finished) return;
     running = false;
     finished = true;
-    document.querySelector('.option[data-answer]').classList.add('is-answer');
-    setTimeout(showCard, 1000);   // a beat to see the answer, then the card
+
+    if (option === correctOption) {
+      option.classList.add('is-answer', 'is-correct');
+      say('correct');
+      setTimeout(showCard, 1200);
+    } else {
+      option.classList.add('is-wrong');
+      say('wrong');
+      setTimeout(() => correctOption.classList.add('is-answer'), 500);
+      setTimeout(showCard, 1900);
+    }
   });
 });
 
