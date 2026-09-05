@@ -41,7 +41,7 @@
 
 *, *::before, *::after{ box-sizing: border-box; }
 
-html{ scroll-behavior: smooth; }
+html{ scroll-behavior: smooth; scroll-snap-type: y mandatory; }
 
 body{
   margin: 0;
@@ -58,13 +58,16 @@ body{
   position: relative;
   width: 100%;
   min-height: 100svh;            /* one screen per panel (872px in the design) */
-  min-height: 100dvh;            /* tracks the collapsed-toolbar viewport too, so the
-                                     next panel never peeks in once Safari's chrome hides */
+  min-height: 100dvh;            /* tracks the collapsed-toolbar viewport too */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  scroll-snap-align: start;      /* each panel is a discrete screen: scrolling
+                                     always settles fully on one, never mid-way
+                                     between two */
+  scroll-snap-stop: always;
 }
 
 /* ----------------------------------------------------- Frame 11 (hero) --- */
