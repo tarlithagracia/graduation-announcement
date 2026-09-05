@@ -58,6 +58,8 @@ body{
   position: relative;
   width: 100%;
   min-height: 100svh;            /* one screen per panel (872px in the design) */
+  min-height: 100dvh;            /* tracks the collapsed-toolbar viewport too, so the
+                                     next panel never peeks in once Safari's chrome hides */
   display: flex;
   flex-direction: column;
   align-items: center;
