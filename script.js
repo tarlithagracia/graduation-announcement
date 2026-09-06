@@ -51,6 +51,21 @@ function showCard() {
   card.scrollIntoView({ block: 'start' });
 }
 
+/* "Keep scrolling" and "Skip the quiz" jump between sections. A plain
+   href="#id" anchor jump fights with mandatory scroll-snap here -- the
+   browser's snap logic can pull the animated scroll back to the section
+   it started from. scrollIntoView doesn't have that problem, so intercept
+   these in-page links and use it instead, same as the quiz's own
+   auto-advance to the card. */
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  const target = document.querySelector(link.getAttribute('href'));
+  if (!target) return;
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    target.scrollIntoView({ block: 'start' });
+  });
+});
+
 // the countdown runs while the quiz is on screen
 new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
