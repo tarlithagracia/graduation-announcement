@@ -1,18 +1,27 @@
-/* iOS Safari's dvh doesn't always recalculate promptly when its toolbar
-   shows/hides mid-scroll, which can leave a section a few pixels short of
-   the real viewport (the next section's background peeking through at the
-   bottom edge). Tracking the visual viewport in JS and feeding it into a
-   CSS variable is the reliable fix. */
+/* iOS Safari's toolbar collapses on the very first scroll away from the
+   top of the page, and that specific transition can outrace a plain
+   resize listener -- dvh, and even visualViewport's own resize event,
+   don't always land before the browser paints the new (taller) viewport.
+   Recomputing on scroll too (rAF-throttled) catches it regardless of
+   which resize-family event does or doesn't fire on a given device. */
 function setViewportHeight() {
   const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
   document.documentElement.style.setProperty('--vh', `${height * 0.01}px`);
 }
 setViewportHeight();
+window.addEventListener('resize', setViewportHeight);
 if (window.visualViewport) {
   window.visualViewport.addEventListener('resize', setViewportHeight);
-} else {
-  window.addEventListener('resize', setViewportHeight);
 }
+let vhScrollTicking = false;
+window.addEventListener('scroll', () => {
+  if (vhScrollTicking) return;
+  vhScrollTicking = true;
+  requestAnimationFrame(() => {
+    setViewportHeight();
+    vhScrollTicking = false;
+  });
+}, { passive: true });
 
 /* The three links on the card. */
 const CONFIG = {
