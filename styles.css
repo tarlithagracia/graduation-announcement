@@ -359,15 +359,15 @@ body{
 .card{
   display: flex; flex-direction: column; align-items: center;
   width: 36.2rem;
-  gap: 2rem;
+  gap: 8.958rem;
   /* centred as a block within the panel via .panel's justify-content: center */
 }
 .card__intro{
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   width: 36.2rem; text-align: center;
 }
-.card__intro-small{ margin: 0; width: 32.6rem; font-size: 1.8rem; line-height: 3rem; }
-.card__intro-big{ margin: 0; width: 28.4rem; font-size: 2.4rem; line-height: 4rem; }
+.card__intro-small{ margin: 0; width: 32rem; font-size: 1.80706rem; line-height: 3rem; }
+.card__intro-big{ margin: 0; width: 21.384rem; font-size: 1.80706rem; line-height: 3rem; }
 
 .card__id{ display: flex; flex-direction: column; align-items: center; gap: 1.4rem; width: 31.9rem; text-align: center; }
 .card__idtop{
@@ -389,7 +389,6 @@ body{
   border-radius: 1.53983rem;
 }
 
-.card__thanks{ display: flex; flex-direction: column; align-items: center; margin-top: 3.6rem; }
 .card__thankyou{
   margin: 0; width: 36.2rem;
   font-family: var(--font-script); font-size: 6.77064rem; line-height: 7.4rem; text-align: center;
