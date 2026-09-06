@@ -41,7 +41,14 @@
 
 *, *::before, *::after{ box-sizing: border-box; }
 
-html{ scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+html{ scroll-behavior: smooth; scroll-snap-type: y proximity; }
+/* proximity, not mandatory: mandatory forces every scroll to land exactly on
+   a section boundary, even a fast flick that would naturally end up
+   mid-section -- fighting that gesture is what caused sections to visibly
+   overshoot into the next one and then get yanked back (seen as the next
+   section's photo flashing through before snapping back). proximity only
+   nudges you to a nearby boundary instead of forcing one, so it keeps
+   scrolling feeling section-by-section without that fight. */
 
 body{
   margin: 0;
@@ -64,10 +71,7 @@ body{
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  scroll-snap-align: start;      /* each panel is a discrete screen: scrolling
-                                     always settles fully on one, never mid-way
-                                     between two */
-  scroll-snap-stop: always;
+  scroll-snap-align: start;      /* each panel is a discrete screen */
 }
 
 /* story/quiz/card center their content (the base justify-content: center
