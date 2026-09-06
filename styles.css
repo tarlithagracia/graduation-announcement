@@ -58,16 +58,7 @@ body{
   position: relative;
   width: 100%;
   min-height: 100svh;            /* one screen per panel (872px in the design) */
-  min-height: 100dvh;            /* tracks the collapsed-toolbar viewport too. Safari's
-                                     very first toolbar-collapse animation can still race
-                                     this by a frame or two -- a known WebKit edge case
-                                     with no fully reliable JS workaround (tried and
-                                     reverted: live-updating this during scroll causes a
-                                     worse bug, the panel resizing under the user's
-                                     finger mid-gesture). Accepted as a rare, brief
-                                     cosmetic gap on the very first scroll in Safari; it
-                                     doesn't occur once the toolbar has settled, and
-                                     doesn't happen at all in standalone/Home-Screen mode. */
+  min-height: 100dvh;            /* tracks the collapsed-toolbar viewport too */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,6 +69,22 @@ body{
                                      between two */
   scroll-snap-stop: always;
 }
+
+/* story/quiz/card center their content (the base justify-content: center
+   above), so oversizing them is safe: sized to the LARGEST the screen ever
+   gets (toolbar collapsed) instead of the current toolbar state. dvh chases
+   Safari's toolbar-collapse animation and can lose that race, showing the
+   next section's photo for a frame -- a visible glitch at the boundary
+   between two very different background photos. With lvh, the only
+   possible miss is needing a few extra px of scroll to fully clear a panel
+   while the toolbar is still shown (content stays centered and fully
+   visible either way) -- never a mismatched-color seam.
+   Hero is excluded: its content is bottom-anchored (justify-content:
+   flex-end, so the text sits low over the photo by design), and an
+   oversized bottom-anchored box pushes that content further down, off the
+   bottom of the screen while the toolbar is showing -- confirmed by
+   testing, so left as-is rather than shipping a real regression. */
+.panel--story, .panel--quiz, .panel--card{ min-height: 100lvh; }
 
 /* ----------------------------------------------------- Frame 11 (hero) --- */
 
