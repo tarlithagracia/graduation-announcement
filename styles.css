@@ -212,6 +212,10 @@ body{
 
 /* ------------------------------------------------------ Frame 24 (quiz) --- */
 
+.panel--quiz{ background: #120A07; }
+.quiz__bg{ position: absolute; inset: 0; overflow: hidden; }
+.quiz__bg img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+
 .pill.quiz__skip{
   padding: .333664rem 1.16782rem;
   border-radius: 1.66832rem;
