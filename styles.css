@@ -246,7 +246,6 @@ body{
 .timer{
   position: relative;
   width: 4.8rem; height: 5.10379rem;   /* the "10" text box in the design */
-  display: grid; place-items: center;
 }
 .timer__ring{
   position: absolute; left: 50%; top: 50%;
@@ -259,8 +258,13 @@ body{
   stroke-dasharray: 276.46; stroke-dashoffset: 0;
 }
 .timer__num{
-  position: relative;
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);   /* centered on the same point as the
+                                          ring, same technique, instead of
+                                          grid placement -- keeps both
+                                          exactly concentric */
   font-size: 4.21845rem; line-height: 5.10379rem;
+  text-align: center;
   font-variant-numeric: tabular-nums;
 }
 

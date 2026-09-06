@@ -51,14 +51,17 @@ function showCard() {
   card.scrollIntoView({ block: 'start' });
 }
 
-/* "Keep scrolling" and "Skip the quiz" jump between sections. A plain
-   href="#id" anchor jump fights with mandatory scroll-snap here -- the
-   browser's snap logic can pull the animated scroll back to the section
-   it started from. scrollIntoView doesn't have that problem, so intercept
-   these in-page links and use it instead, same as the quiz's own
-   auto-advance to the card. */
+/* "Keep scrolling" and "Skip the quiz" jump between sections, using
+   scrollIntoView for a more reliable scroll than a plain anchor jump.
+   Only real in-page anchors ("#story", "#card") qualify -- the card's
+   Linkedin/Resume/Portfolio links use a bare href="#" as a placeholder
+   (their real URL gets filled in below), and "#" alone isn't a valid
+   selector: querySelector('#') throws, which was silently aborting the
+   rest of this script, including the quiz timer setup below it. */
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  const target = document.querySelector(link.getAttribute('href'));
+  const href = link.getAttribute('href');
+  if (href.length <= 1) return;
+  const target = document.querySelector(href);
   if (!target) return;
   link.addEventListener('click', (event) => {
     event.preventDefault();
