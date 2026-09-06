@@ -1,3 +1,19 @@
+/* iOS Safari's dvh doesn't always recalculate promptly when its toolbar
+   shows/hides mid-scroll, which can leave a section a few pixels short of
+   the real viewport (the next section's background peeking through at the
+   bottom edge). Tracking the visual viewport in JS and feeding it into a
+   CSS variable is the reliable fix. */
+function setViewportHeight() {
+  const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+  document.documentElement.style.setProperty('--vh', `${height * 0.01}px`);
+}
+setViewportHeight();
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', setViewportHeight);
+} else {
+  window.addEventListener('resize', setViewportHeight);
+}
+
 /* The three links on the card. */
 const CONFIG = {
   linkedin: 'https://www.linkedin.com/in/tarlithagracia/',
