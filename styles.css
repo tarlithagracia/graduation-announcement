@@ -336,6 +336,10 @@ body{
 
 /* ------------------------------------------------------ Card (13:175) --- */
 
+.panel--card{ background: #120A07; }
+.card__bg{ position: absolute; inset: 0; overflow: hidden; }
+.card__bg img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+
 .card{
   display: flex; flex-direction: column; align-items: center;
   width: 36.2rem;
