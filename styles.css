@@ -316,8 +316,8 @@ body{
 .card{
   display: flex; flex-direction: column; align-items: center;
   width: 36.2rem;
-  padding-bottom: 14.6rem;       /* Frame 22 sits at y=64, 210 below the sign */
   gap: 2rem;
+  /* centred as a block within the panel via .panel's justify-content: center */
 }
 .card__intro{
   display: flex; flex-direction: column; align-items: center; justify-content: center;
