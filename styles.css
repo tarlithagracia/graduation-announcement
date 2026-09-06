@@ -57,10 +57,17 @@ body{
 .panel{
   position: relative;
   width: 100%;
-  min-height: 100svh;                    /* one screen per panel (872px in the design) */
-  min-height: 100dvh;                    /* tracks the collapsed-toolbar viewport too */
-  min-height: calc(var(--vh, 1svh) * 100); /* JS-measured viewport (script.js): the
-                                               reliable fix for iOS Safari's dvh lag */
+  min-height: 100svh;            /* one screen per panel (872px in the design) */
+  min-height: 100dvh;            /* tracks the collapsed-toolbar viewport too. Safari's
+                                     very first toolbar-collapse animation can still race
+                                     this by a frame or two -- a known WebKit edge case
+                                     with no fully reliable JS workaround (tried and
+                                     reverted: live-updating this during scroll causes a
+                                     worse bug, the panel resizing under the user's
+                                     finger mid-gesture). Accepted as a rare, brief
+                                     cosmetic gap on the very first scroll in Safari; it
+                                     doesn't occur once the toolbar has settled, and
+                                     doesn't happen at all in standalone/Home-Screen mode. */
   display: flex;
   flex-direction: column;
   align-items: center;
