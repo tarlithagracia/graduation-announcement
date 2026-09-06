@@ -390,6 +390,7 @@ body{
 }
 
 .card__thankyou{
+  position: relative;
   margin: 0; width: 36.2rem;
   font-family: var(--font-script); font-size: 6.77064rem; line-height: 7.4rem; text-align: center;
 }
