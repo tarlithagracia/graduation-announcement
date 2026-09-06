@@ -123,10 +123,10 @@ body{
 .pill.hero__hint{
   position: relative;
   margin-bottom: 1.8rem;
-  padding: .238095rem .833333rem;
-  border-radius: 1.19048rem;
-  font-size: 1.19048rem;
-  line-height: 2rem;
+  padding: .305403rem 1.06891rem;
+  border-radius: 1.52701rem;
+  font-size: 1.52701rem;
+  line-height: 2.5rem;
   animation: float 2.6s ease-in-out infinite;
 }
 
